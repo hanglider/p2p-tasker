@@ -1,28 +1,12 @@
-import socket
+from flask import Flask, request, jsonify
 
-def start_server(host='192.168.56.1', port=8080):
-    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Повторное использование порта
-    server_socket.bind((host, port))
-    server_socket.listen(5)
-    print(f"Сервер запущен на {host}:{port}, ожидает подключения клиентов...")
+app = Flask(__name__)
 
-    while True:
-        try:
-            client_socket, client_address = server_socket.accept()
-            print(f"Клиент подключился: {client_address}")
-            
-            while True:
-                data = client_socket.recv(1024).decode('utf-8')
-                if not data:
-                    break
-                print(f"Получено сообщение от {client_address}: {data}")
-                client_socket.send(f"Сообщение '{data}' получено".encode('utf-8'))
-        except Exception as e:
-            print(f"Ошибка: {e}")
-        finally:
-            client_socket.close()
-            print(f"Клиент {client_address} отключился.")
+@app.route('/message', methods=['POST'])
+def receive_message():
+    data = request.json  # Получаем данные из POST-запроса
+    print(f"Получено сообщение: {data['message']}")
+    return jsonify({'response': 'Сообщение получено!'}), 200  # Возвращаем ответ клиенту
 
-if __name__ == "__main__":
-    start_server()
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)  # Сервер доступен по любому IP на порту 5000

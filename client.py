@@ -1,25 +1,21 @@
-import socket
+import requests
 
-def start_client(server_ip, server_port=8080):
+def send_message(server_ip, message):
+    url = f'http://{server_ip}:5000/message'
+    data = {'message': message}
     try:
-        client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        client_socket.connect((server_ip, server_port))
-        print(f"Подключен к серверу {server_ip}:{server_port}")
-
-        while True:
-            message = input("Введите сообщение (или 'exit' для выхода): ")
-            if message.lower() == 'exit':
-                break
-            client_socket.send(message.encode('utf-8'))
-
-            response = client_socket.recv(1024).decode('utf-8')
-            print(f"Ответ от сервера: {response}")
+        response = requests.post(url, json=data)
+        if response.status_code == 200:
+            print(f"Ответ от сервера: {response.json()['response']}")
+        else:
+            print(f"Ошибка сервера: {response.status_code}")
     except Exception as e:
         print(f"Ошибка подключения: {e}")
-    finally:
-        client_socket.close()
-        print("Отключено от сервера.")
 
-if __name__ == "__main__":
-    server_ip = input("Введите IP сервера: ")
-    start_client(server_ip)
+if __name__ == '__main__':
+    server_ip = input("Введите IP сервера: ")  # IP-адрес сервера
+    while True:
+        message = input("Введите сообщение (или 'exit' для выхода): ")
+        if message.lower() == 'exit':
+            break
+        send_message(server_ip, message)
