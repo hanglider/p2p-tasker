@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+import task
 
 app = Flask(__name__)
 
@@ -14,6 +15,7 @@ def dom():
 def receive_message():
     data = request.json  # Получаем данные из POST-запроса
     print(f"Получено сообщение: {data['message']}")
+    task.open_image(data['message'])
     return jsonify({'response': 'Сообщение получено!'})  # Возвращаем ответ клиенту
 
 if __name__ == '__main__':
