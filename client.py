@@ -3,8 +3,8 @@ import requests
 def send_message(server_ip, index):
     url = f'http://{server_ip}:5000/message'
     data = {'message': message}
-    crop = {'crop1' : {0:500, 0:500}, 'crop2' : {500:1000, 500:1000} }  
-    data['message'] = crop[f'crop{index}']
+    crop = [{0:500, 0:500}, {500:1000, 500:1000}]
+    data['message'] = crop[index]
     try:
         response = requests.post(url, json=data)
         if response.status_code == 200:
