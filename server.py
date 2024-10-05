@@ -14,7 +14,7 @@ def dom():
 @app.route('/message', methods=['POST'])
 def receive_message():
     data = request.json  # Получаем данные из POST-запроса
-    print(f"Получено сообщение: {data['message']}")
+    print(f"Получено сообщение: {data['crop']}")
     task.open_image(data['message'])
     return jsonify({'response': 'Сообщение получено!'})  # Возвращаем ответ клиенту
 
