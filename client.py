@@ -13,9 +13,11 @@ def send_message(server_ip, message):
         print(f"Ошибка подключения: {e}")
 
 if __name__ == '__main__':
-    server_ip = input("Введите IP сервера: ")  # IP-адрес сервера
+    server_ip1 = input("Введите IP сервера1: ")
+    server_ip2 = input("Введите IP сервера2: ")
+    servers = [server_ip1, server_ip2]
+    server = 1
     while True:
+        server_index = int(input("Какому хую вы хотите отправить: "))
         message = input("Введите сообщение (или 'exit' для выхода): ")
-        if message.lower() == 'exit':
-            break
-        send_message(server_ip, message)
+        send_message(servers[server_index], message)

@@ -17,4 +17,4 @@ def receive_message():
     return jsonify({'response': 'Сообщение получено!'})  # Возвращаем ответ клиенту
 
 if __name__ == '__main__':
-    app.run(host='172.20.10.2', port=5000)  # Нужно вставить ip роутера
+    app.run(host='192.168.100.5', port=5000)  # Нужно вставить ip роутера
