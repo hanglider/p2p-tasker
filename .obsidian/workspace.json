@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "86cbe654f9afad64",
+        "id": "99818702e6950fc7",
         "type": "tabs",
         "children": [
           {
-            "id": "bb0c36dd777eea6c",
+            "id": "b0ba9ab32b711a3a",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "README.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -85,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -124,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "README.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -146,12 +138,13 @@
       "command-palette:Открыть палитру команд": false
     }
   },
-  "active": "3ab6155b1a391f60",
+  "active": "b0ba9ab32b711a3a",
   "lastOpenFiles": [
+    "Корхов_план_Бусько.pdf",
+    "README.md",
     "photo/photo_2024-10-14_23-11-47.jpg",
     "negr.jpg",
     "photo/photo_2024-10-14_21-01-00.md",
-    "README.md",
     "photo/photo_2024-10-14_21-01-00.jpg",
     "photo",
     "Новая папка",
